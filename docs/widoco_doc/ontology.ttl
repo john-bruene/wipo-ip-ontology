@@ -1,0 +1,382 @@
+@prefix : <https://w3id.org/wipo-ip#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/wipo-ip#> .
+
+<https://w3id.org/wipo-ip#> rdf:type owl:Ontology ;
+                             <http://purl.org/dc/elements/1.1/creator> "John Frederic Brüne"@en ;
+                             <http://purl.org/dc/elements/1.1/description> "Draft schema (TBox only) for comparing national IP laws against WIPO treaty minimum standards. Built following Palmirani's MeLOn methodology, reusing FRBR (frbr:) for the document layer and LegalRuleML's metamodel (lrmlmm:) for the statement layer. Covers CQ1-CQ9 (national side); the treaty side (CQ10) is in the separate treaty_draft.ttl, marked as discussion material. Worked examples (Ireland, India, Kenya) that validate this schema against real statute text live in examples.ttl, kept separate on purpose: this file stays a stable, roughly constant-size schema no matter how many jurisdictions the pipeline eventually covers (up to ~200), while worked examples grow one file per batch of countries. Split 2026-07-23."@en ;
+                             <http://purl.org/dc/elements/1.1/title> "WIPO IP Ontology (draft)"@en ;
+                             rdfs:label "WIPO IP Ontology (draft)"@en ;
+                             owl:versionInfo "draft, 2026-07-23" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/vocab/frbr/core#realizationOf
+<http://purl.org/vocab/frbr/core#realizationOf> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+                                                rdfs:range <http://purl.org/vocab/frbr/core#Work> ;
+                                                rdfs:label "realization of" .
+
+
+###  https://w3id.org/wipo-ip#appliesInJurisdiction
+:appliesInJurisdiction rdf:type owl:ObjectProperty ;
+                       rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+                       rdfs:range <http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction> ;
+                       rdfs:label "applies in jurisdiction" .
+
+
+###  https://w3id.org/wipo-ip#appliesTo
+:appliesTo rdf:type owl:ObjectProperty ;
+           rdfs:range :WorkType ;
+           rdfs:comment "domain intentionally left open: used for Copyright and for ExceptionOrLimitation alike, same fix as :contains above." ;
+           rdfs:label "applies to" .
+
+
+###  https://w3id.org/wipo-ip#contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+          rdfs:comment "range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only." ;
+          rdfs:label "contains" .
+
+
+###  https://w3id.org/wipo-ip#countedFrom
+:countedFrom rdf:type owl:ObjectProperty ;
+             rdfs:domain :ProtectionTerm ;
+             rdfs:range :ReferenceEvent ;
+             rdfs:label "counted from" .
+
+
+###  https://w3id.org/wipo-ip#expresses
+:expresses rdf:type owl:ObjectProperty ;
+           rdfs:domain <http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement> ;
+           rdfs:range :Copyright ;
+           rdfs:label "expresses" .
+
+
+###  https://w3id.org/wipo-ip#hasRight
+:hasRight rdf:type owl:ObjectProperty ;
+          rdfs:domain <http://purl.org/vocab/frbr/core#Work> ;
+          rdfs:range :Copyright ;
+          rdfs:label "has right" .
+
+
+###  https://w3id.org/wipo-ip#hasTerm
+:hasTerm rdf:type owl:ObjectProperty ;
+         rdfs:domain :Copyright ;
+         rdfs:range :ProtectionTerm ;
+         rdfs:label "has term" .
+
+
+###  https://w3id.org/wipo-ip#includesAct
+:includesAct rdf:type owl:ObjectProperty ;
+             rdfs:domain :Copyright ;
+             rdfs:range :RightKind ;
+             rdfs:comment "CQ2. Which acts a copyright covers; a country can list several. Mapping these across countries is an approximation, not a formal equivalence: Ireland's single 'make available to the public' is treated here as the closest match to what India and Kenya sometimes split into distribution, communication to the public, and making available as separate items. Flagged here, not silently assumed as equal." ;
+             rdfs:label "includes act" .
+
+
+###  https://w3id.org/wipo-ip#memberJurisdiction
+:memberJurisdiction rdf:type owl:ObjectProperty ;
+                    rdfs:domain :TreatyMembership ;
+                    rdfs:range <http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction> ;
+                    rdfs:label "member jurisdiction" .
+
+
+###  https://w3id.org/wipo-ip#memberOfTreaty
+:memberOfTreaty rdf:type owl:ObjectProperty ;
+                rdfs:domain :TreatyMembership ;
+                rdfs:range <http://purl.org/vocab/frbr/core#Work> ;
+                rdfs:label "member of treaty" .
+
+
+###  https://w3id.org/wipo-ip#ofExceptionKind
+:ofExceptionKind rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ExceptionOrLimitation ;
+                 rdfs:range :ExceptionKind ;
+                 rdfs:label "of exception kind" .
+
+
+###  https://w3id.org/wipo-ip#subjectToException
+:subjectToException rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Copyright ;
+                    rdfs:range :ExceptionOrLimitation ;
+                    rdfs:label "subject to exception" .
+
+
+###  https://w3id.org/wipo-ip#termUnit
+:termUnit rdf:type owl:ObjectProperty ;
+          rdfs:domain :ProtectionTerm ;
+          rdfs:range :TimeUnit ;
+          rdfs:label "term unit" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/wipo-ip#amendedBy
+:amendedBy rdf:type owl:DatatypeProperty ;
+           rdfs:domain <http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement> ;
+           rdfs:range xsd:string ;
+           rdfs:comment "which later Act changed this statement's wording, when the text itself says so (here, a footnote). CQ11, kept modest: this is not a full historical Expression, that would need the pre-amendment text itself, which we do not have cached yet." ;
+           rdfs:label "amended by" .
+
+
+###  https://w3id.org/wipo-ip#inForceFrom
+:inForceFrom rdf:type owl:DatatypeProperty ;
+             rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+             rdfs:range xsd:date ;
+             rdfs:label "in force from" .
+
+
+###  https://w3id.org/wipo-ip#inForceTo
+:inForceTo rdf:type owl:DatatypeProperty ;
+           rdfs:domain <http://purl.org/vocab/frbr/core#Expression> ;
+           rdfs:range xsd:date ;
+           rdfs:comment "end of the validity interval; no value means still in force. CQ5." ;
+           rdfs:label "in force to" .
+
+
+###  https://w3id.org/wipo-ip#sinceDate
+:sinceDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :TreatyMembership ;
+           rdfs:range xsd:date ;
+           rdfs:label "since date" .
+
+
+###  https://w3id.org/wipo-ip#termValue
+:termValue rdf:type owl:DatatypeProperty ;
+           rdfs:domain :ProtectionTerm ;
+           rdfs:range xsd:integer ;
+           rdfs:label "term value" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement
+<http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement> rdf:type owl:Class ;
+                                                                                 rdfs:comment "a statement that defines a term or establishes eligibility, without itself granting or restricting conduct." ;
+                                                                                 rdfs:label "Constitutive Statement" .
+
+
+###  http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction
+<http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction> rdf:type owl:Class ;
+                                                                        rdfs:comment "the country or supranational body a legal Expression applies in; ISO code, or 'un' for WIPO treaties." ;
+                                                                        rdfs:label "Jurisdiction" .
+
+
+###  http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement
+<http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement> rdf:type owl:Class ;
+                                                                                 rdfs:comment "a statement that grants, restricts, or otherwise governs conduct, e.g. a right or an exception." ;
+                                                                                 rdfs:label "Prescriptive Statement" .
+
+
+###  http://purl.org/vocab/frbr/core#Expression
+<http://purl.org/vocab/frbr/core#Expression> rdf:type owl:Class ;
+                                             rdfs:comment "one specific dated version of a Work (FRBR Expression), e.g. the 2000 text of the Irish Copyright Act." ;
+                                             rdfs:label "Expression" .
+
+
+###  http://purl.org/vocab/frbr/core#Work
+<http://purl.org/vocab/frbr/core#Work> rdf:type owl:Class ;
+                                       rdfs:comment "the law in the abstract (FRBR Work), independent of any specific dated version; see frbr:Expression for that." ;
+                                       rdfs:label "Work" .
+
+
+###  https://w3id.org/wipo-ip#Copyright
+:Copyright rdf:type owl:Class ;
+           rdfs:comment "the bundle of rights a Work carries; which specific acts it covers is given via :includesAct." ;
+           rdfs:label "Copyright" .
+
+
+###  https://w3id.org/wipo-ip#ExceptionKind
+:ExceptionKind rdf:type owl:Class ;
+               rdfs:comment "the same Copyright Ontology (Garcia & Gil, JURIX 2008) lists seven exceptions: Quotation, Education, Information, Official Act, Private Copy, Parody, Temporary Reproduction. PrivateUseException and ParodyException match exactly (Private Copy, Parody); ResearchException, CriticismReviewException and NewsReportingException are only approximate matches to Education, Quotation and Information respectively, not identical in scope, flagged here rather than assumed equivalent." ;
+               rdfs:label "Exception Kind" ;
+               rdfs:seeAlso <https://rhizomik.net/html/~roberto/papers/rg-losw08.pdf> .
+
+
+###  https://w3id.org/wipo-ip#ExceptionOrLimitation
+:ExceptionOrLimitation rdf:type owl:Class ;
+                       rdfs:comment "a country-specific carve-out from Copyright, e.g. Ireland's fair dealing for research; classified by one or more ExceptionKind." ;
+                       rdfs:label "Exception or Limitation" .
+
+
+###  https://w3id.org/wipo-ip#ProtectionTerm
+:ProtectionTerm rdf:type owl:Class ;
+                rdfs:comment "how long a Copyright lasts: a value, a unit, and the event it is counted from." ;
+                rdfs:label "Protection Term" .
+
+
+###  https://w3id.org/wipo-ip#ReferenceEvent
+:ReferenceEvent rdf:type owl:Class ;
+                rdfs:comment "the event a ProtectionTerm is counted from, e.g. the author's death or the work's creation." ;
+                rdfs:label "Reference Event" .
+
+
+###  https://w3id.org/wipo-ip#RightKind
+:RightKind rdf:type owl:Class ;
+           rdfs:comment "matches the Economic Rights hierarchy in Garcia & Gil's Copyright Ontology (JURIX 2008): Reproduction, Distribution, Communication (with Broadcasting and Making Available as subtypes), Transformation (with Adaptation and Translation as subtypes), Fixation. That hierarchy refines the four top-level ExploitationRight classes (Reproduction, Communication, Distribution, Transformation) in Delgado et al.'s earlier IPROnto (JURIX 2003). All eight individuals below have a direct counterpart in the 2008 version." ;
+           rdfs:label "Right Kind" ;
+           rdfs:seeAlso <https://jurix.nl/pdf/j03-12.pdf> ,
+                        <https://rhizomik.net/html/~roberto/papers/rg-losw08.pdf> .
+
+
+###  https://w3id.org/wipo-ip#TimeUnit
+:TimeUnit rdf:type owl:Class ;
+          rdfs:comment "the unit a ProtectionTerm's value is counted in, e.g. year or month." ;
+          rdfs:label "Time Unit" .
+
+
+###  https://w3id.org/wipo-ip#TreatyMembership
+:TreatyMembership rdf:type owl:Class ;
+                  rdfs:comment "records that a Jurisdiction is a member of a treaty (frbr:Work) since a given date. CQ9." ;
+                  rdfs:label "Treaty Membership" .
+
+
+###  https://w3id.org/wipo-ip#WorkType
+:WorkType rdf:type owl:Class ;
+          rdfs:comment "the kind of subject matter a Copyright or ExceptionOrLimitation applies to, e.g. literary work or sound recording." ;
+          rdfs:label "Work Type" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/wipo-ip#AdaptationAct
+:AdaptationAct rdf:type owl:NamedIndividual ,
+                        :RightKind .
+
+
+###  https://w3id.org/wipo-ip#AuthorDeath
+:AuthorDeath rdf:type owl:NamedIndividual ,
+                      :ReferenceEvent .
+
+
+###  https://w3id.org/wipo-ip#BerneConvention
+:BerneConvention rdf:type owl:NamedIndividual ,
+                          <http://purl.org/vocab/frbr/core#Work> ;
+                 rdfs:label "Berne Convention for the Protection of Literary and Artistic Works" .
+
+
+###  https://w3id.org/wipo-ip#BroadcastingAct
+:BroadcastingAct rdf:type owl:NamedIndividual ,
+                          :RightKind .
+
+
+###  https://w3id.org/wipo-ip#CommunicationToPublicAct
+:CommunicationToPublicAct rdf:type owl:NamedIndividual ,
+                                   :RightKind .
+
+
+###  https://w3id.org/wipo-ip#Creation
+:Creation rdf:type owl:NamedIndividual ,
+                   :ReferenceEvent .
+
+
+###  https://w3id.org/wipo-ip#CriticismReviewException
+:CriticismReviewException rdf:type owl:NamedIndividual ,
+                                   :ExceptionKind .
+
+
+###  https://w3id.org/wipo-ip#DistributionAct
+:DistributionAct rdf:type owl:NamedIndividual ,
+                          :RightKind .
+
+
+###  https://w3id.org/wipo-ip#LiteraryWork
+:LiteraryWork rdf:type owl:NamedIndividual ,
+                       :WorkType .
+
+
+###  https://w3id.org/wipo-ip#MakingAvailableAct
+:MakingAvailableAct rdf:type owl:NamedIndividual ,
+                             :RightKind .
+
+
+###  https://w3id.org/wipo-ip#Month
+:Month rdf:type owl:NamedIndividual ,
+                :TimeUnit .
+
+
+###  https://w3id.org/wipo-ip#NewsReportingException
+:NewsReportingException rdf:type owl:NamedIndividual ,
+                                 :ExceptionKind .
+
+
+###  https://w3id.org/wipo-ip#ParodyException
+:ParodyException rdf:type owl:NamedIndividual ,
+                          :ExceptionKind ;
+                 rdfs:comment "found in Kenya's exceptions list, not (yet) confirmed in Ireland's or India's." .
+
+
+###  https://w3id.org/wipo-ip#PrivateUseException
+:PrivateUseException rdf:type owl:NamedIndividual ,
+                              :ExceptionKind .
+
+
+###  https://w3id.org/wipo-ip#RecordingAct
+:RecordingAct rdf:type owl:NamedIndividual ,
+                       :RightKind ;
+              rdfs:comment "making a film or sound recording of the work; found in India's list, not (yet) in Ireland's or Kenya's." .
+
+
+###  https://w3id.org/wipo-ip#ReproductionAct
+:ReproductionAct rdf:type owl:NamedIndividual ,
+                          :RightKind .
+
+
+###  https://w3id.org/wipo-ip#ResearchException
+:ResearchException rdf:type owl:NamedIndividual ,
+                            :ExceptionKind .
+
+
+###  https://w3id.org/wipo-ip#SoundRecording
+:SoundRecording rdf:type owl:NamedIndividual ,
+                         :WorkType .
+
+
+###  https://w3id.org/wipo-ip#TranslationAct
+:TranslationAct rdf:type owl:NamedIndividual ,
+                         :RightKind .
+
+
+###  https://w3id.org/wipo-ip#Year
+:Year rdf:type owl:NamedIndividual ,
+               :TimeUnit .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
