@@ -1,0 +1,186 @@
+@prefix : <https://w3id.org/wipo-ip#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix lrmlmm: <http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#> .
+
+# =============================================================================
+# Worked examples (ABox): Ireland, India, Kenya
+# Split out from ontology_draft.ttl on 2026-07-23. This file holds only
+# per-country instance data that validates the schema in ontology_draft.ttl
+# against real statute text (CQ1-CQ9); it declares no classes or properties
+# of its own. Load together with ontology_draft.ttl (same namespace, plain
+# Turtle, no owl:imports needed) to resolve every class/property used below.
+# Point documentation/visualisation tools (Widoco, LODE, Graffoo, WebVOWL) at
+# ontology_draft.ttl alone for a schema-only view; this file is instance data,
+# not part of what those tools should document as "the ontology".
+#
+# Deliberately kept separate rather than merged into ontology_draft.ttl:
+# ontology_draft.ttl is currently ~225 lines and stays that size regardless
+# of scope; this file is already ~150 lines for 3 countries, ~50 lines per
+# country. At the project's eventual ~200 jurisdictions that would be several
+# thousand lines mixed into the schema file, which does not scale. Expect
+# this file (or its later per-country/per-batch successors) to grow; the
+# schema file should not.
+#
+# Sources: raw/national/ie/ie-enterprise/2360.pdf (Ireland, 2024 text),
+# raw/wipolex/IN/22949/in153en_1.pdf (India, amended to 2023),
+# raw/wipolex/KE/23267/ke045en_1.pdf (Kenya, amended to 2022).
+# No eId yet for any of the three (not run through the AKN pipeline); section
+# numbers stand in for now. Berne dates verified against Wipo_treaties_overview.xlsx.
+# =============================================================================
+
+# --- Ireland ---
+:Ireland a lrmlmm:Jurisdiction .
+:IrishCopyrightAct a frbr:Work .
+
+:IrishCopyrightAct_2000 a frbr:Expression ;
+    frbr:realizationOf :IrishCopyrightAct ;
+    :appliesInJurisdiction :Ireland ;
+    :inForceFrom "2000-01-01"^^xsd:date .
+
+:AnonymousWorkDefinition a lrmlmm:ConstitutiveStatement ;
+    rdfs:comment "anonymous work means a work where the identity of the author is unknown, section 2(1)" .
+:IrishCopyrightAct_2000 :contains :AnonymousWorkDefinition .
+
+:IrishEligibilityDefinition a lrmlmm:ConstitutiveStatement ;
+    rdfs:comment "a work qualifies for copyright protection where the author was, at the material time, an Irish citizen or a citizen, subject, or resident of a qualifying country, section 183(1)-(2). This same rule is also our evidence for CQ7 (equal treatment): it does not distinguish Irish from other qualifying-country nationals. We did not find a separate, standalone national-treatment clause; that principle usually lives in the treaty (Berne art. 5(1)), not restated in national law." .
+:IrishCopyrightAct_2000 :contains :IrishEligibilityDefinition .
+
+:IrishSection24Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "the copyright shall expire 70 years after the death of the author, section 24(1)" ;
+    :expresses :IrishCopyright ;
+    :amendedBy "Copyright and Other Intellectual Property Provisions Act 2019" .
+:IrishCopyrightAct_2000 :contains :IrishSection24Statement .
+
+:IrishSection37Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "the owner of the copyright in a work has the exclusive right to copy the work, to make available to the public the work, or to make an adaptation of the work, section 37(1)" ;
+    :expresses :IrishCopyright .
+:IrishCopyrightAct_2000 :contains :IrishSection37Statement .
+
+:IrishSection50Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "fair dealing with a work for the purposes of research or private study shall not infringe any copyright in the work, section 50(1)" ;
+    :expresses :IrishFairDealingResearch .
+:IrishCopyrightAct_2000 :contains :IrishSection50Statement .
+
+:IrishCopyright a :Copyright ;
+    :appliesTo :LiteraryWork ;
+    :hasTerm :IrishTerm ;
+    :includesAct :ReproductionAct , :MakingAvailableAct , :AdaptationAct ;
+    :subjectToException :IrishFairDealingResearch .
+
+:IrishTerm a :ProtectionTerm ;
+    :termValue 70 ; :termUnit :Year ; :countedFrom :AuthorDeath .
+
+:IrishFairDealingResearch a :ExceptionOrLimitation ;
+    :ofExceptionKind :ResearchException ;
+    :appliesTo :LiteraryWork .
+
+:Ireland-Berne-Membership a :TreatyMembership ;
+    :memberJurisdiction :Ireland ; :memberOfTreaty :BerneConvention ;
+    :sinceDate "1927-10-05"^^xsd:date .
+
+# --- India ---
+:India a lrmlmm:Jurisdiction .
+:IndianCopyrightAct a frbr:Work .
+
+:IndianCopyrightAct_2023 a frbr:Expression ;
+    frbr:realizationOf :IndianCopyrightAct ;
+    :appliesInJurisdiction :India ;
+    :inForceFrom "2023-08-11"^^xsd:date .
+
+:IndianSection22Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "copyright shall subsist until sixty years from the beginning of the calendar year next following the year in which the author dies, section 22" ;
+    :expresses :IndianCopyright .
+:IndianCopyrightAct_2023 :contains :IndianSection22Statement .
+
+:IndianSection14Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "copyright means the exclusive right to reproduce, issue copies to the public, perform or communicate to the public, make a film or sound recording, translate, or adapt the work, section 14(1)(a)" ;
+    :expresses :IndianCopyright .
+:IndianCopyrightAct_2023 :contains :IndianSection14Statement .
+
+:IndianSection52Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "a fair dealing with any work, not being a computer programme, for private or personal use including research, criticism or review, or reporting of current events, is not an infringement, section 52(1)(a)" ;
+    :expresses :IndianFairDealing .
+:IndianCopyrightAct_2023 :contains :IndianSection52Statement .
+
+:IndianCopyright a :Copyright ;
+    :appliesTo :LiteraryWork ;
+    :hasTerm :IndianTerm ;
+    :includesAct :ReproductionAct , :DistributionAct , :CommunicationToPublicAct , :RecordingAct , :TranslationAct , :AdaptationAct ;
+    :subjectToException :IndianFairDealing .
+
+:IndianTerm a :ProtectionTerm ;
+    :termValue 60 ; :termUnit :Year ; :countedFrom :AuthorDeath .
+
+:IndianFairDealing a :ExceptionOrLimitation ;
+    :ofExceptionKind :PrivateUseException , :ResearchException , :CriticismReviewException , :NewsReportingException .
+
+:India-Berne-Membership a :TreatyMembership ;
+    :memberJurisdiction :India ; :memberOfTreaty :BerneConvention ;
+    :sinceDate "1928-04-01"^^xsd:date .
+
+# --- Kenya ---
+:Kenya a lrmlmm:Jurisdiction .
+:KenyanCopyrightAct a frbr:Work .
+
+:KenyanCopyrightAct_2022 a frbr:Expression ;
+    frbr:realizationOf :KenyanCopyrightAct ;
+    :appliesInJurisdiction :Kenya ;
+    :inForceFrom "2022-04-22"^^xsd:date .
+
+:KenyanLiteraryTermStatement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "fifty years after the end of the year in which the author dies, for literary, musical, dramatic or artistic works" ;
+    :expresses :KenyanLiteraryCopyright .
+:KenyanCopyrightAct_2022 :contains :KenyanLiteraryTermStatement .
+
+:KenyanSoundRecordingStatement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "fifty years after the end of the year in which the recording was made, for sound recordings" ;
+    :expresses :KenyanSoundRecordingCopyright .
+:KenyanCopyrightAct_2022 :contains :KenyanSoundRecordingStatement .
+
+:KenyanSection26Statement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "copyright in a literary, musical, artistic or audio-visual work is the exclusive right to control reproduction, translation or adaptation, distribution, communication to the public, making available, and broadcasting, section 26(1)" ;
+    :expresses :KenyanLiteraryCopyright .
+:KenyanCopyrightAct_2022 :contains :KenyanSection26Statement .
+
+:KenyanFairDealingStatement a lrmlmm:PrescriptiveStatement ;
+    rdfs:comment "the exclusive rights under section 26 do not include the right to control fair dealing for scientific research, private use, criticism or review, reporting of current events, or parody, pastiche or caricature, Second Schedule Part A(1)-(2)" ;
+    :expresses :KenyanFairDealing .
+:KenyanCopyrightAct_2022 :contains :KenyanFairDealingStatement .
+
+:KenyanLiteraryCopyright a :Copyright ;
+    :appliesTo :LiteraryWork ;
+    :hasTerm :KenyanLiteraryTerm ;
+    :includesAct :ReproductionAct , :TranslationAct , :AdaptationAct , :DistributionAct , :CommunicationToPublicAct , :MakingAvailableAct , :BroadcastingAct ;
+    :subjectToException :KenyanFairDealing .
+
+:KenyanLiteraryTerm a :ProtectionTerm ;
+    :termValue 50 ; :termUnit :Year ; :countedFrom :AuthorDeath .
+
+:KenyanSoundRecordingCopyright a :Copyright ;
+    :appliesTo :SoundRecording ;
+    :hasTerm :KenyanSoundRecordingTerm .
+
+:KenyanSoundRecordingTerm a :ProtectionTerm ;
+    :termValue 50 ; :termUnit :Year ; :countedFrom :Creation .
+
+:KenyanFairDealing a :ExceptionOrLimitation ;
+    :ofExceptionKind :ResearchException , :PrivateUseException , :CriticismReviewException , :NewsReportingException , :ParodyException ;
+    :appliesTo :LiteraryWork .
+
+:Kenya-Berne-Membership a :TreatyMembership ;
+    :memberJurisdiction :Kenya ; :memberOfTreaty :BerneConvention ;
+    :sinceDate "1993-06-11"^^xsd:date .
+
+# =============================================================================
+# CQ8, formalities: checked, not modelled as a class yet.
+# All three qualification/subsistence sections read above (Ireland s.182-183,
+# and the equivalent India and Kenya provisions) require nationality or place
+# of publication, never registration or a notice. Consistent with all three
+# being Berne members (Berne art. 5(2) bans formalities). This is an absence
+# finding, not an exhaustive check of the whole Act in each country; flagged
+# rather than asserted as a hard, checked "no" (the open-world problem noted
+# earlier in this project's own gap review, Lucke 5).
+# =============================================================================
