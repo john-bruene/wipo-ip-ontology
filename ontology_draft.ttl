@@ -115,7 +115,7 @@ lrmlmm:RuleStatement a owl:Class ;
 :RightKind a owl:Class ;
     rdfs:label "Right Kind" ;
     rdfs:seeAlso <https://rhizomik.net/html/~roberto/papers/rg-losw08.pdf> , <https://jurix.nl/pdf/j03-12.pdf> ;
-    rdfs:comment "matches the Economic Rights hierarchy in Garcia & Gil's Copyright Ontology (JURIX 2008): Reproduction, Distribution, Communication (with Broadcasting and Making Available as subtypes), Transformation (with Adaptation and Translation as subtypes), Fixation. That hierarchy refines the four top-level ExploitationRight classes (Reproduction, Communication, Distribution, Transformation) in Delgado et al.'s earlier IPROnto (JURIX 2003). All eight individuals below have a direct counterpart in the 2008 version." .
+    rdfs:comment "matches the Economic Rights hierarchy in Garcia & Gil's Copyright Ontology (JURIX 2008), checked directly against that paper: Reproduction, Distribution, Communication (with Broadcasting and Making Available as subtypes), Transformation (with Adaptation and Translation as subtypes), Fixation. All eight individuals below have a direct counterpart in that 2008 hierarchy. Garcia & Gil describe this hierarchy as refining the four top-level ExploitationRight classes (Reproduction, Communication, Distribution, Transformation) in Delgado et al.'s earlier IPROnto (JURIX 2003); that IPROnto characterization is taken from Garcia & Gil's own literature review, not independently checked against the IPROnto source itself in this session (an earlier fetch attempt failed)." .
 :ReproductionAct a :RightKind .
 :DistributionAct a :RightKind .
 :CommunicationToPublicAct a :RightKind .
