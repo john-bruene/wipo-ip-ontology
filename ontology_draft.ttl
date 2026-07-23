@@ -71,16 +71,25 @@ lrmlmm:Jurisdiction a owl:Class ;
 
 # ===== Statement layer: a law contains statements =====
 lrmlmm:PrescriptiveStatement a owl:Class ;
+    rdfs:subClassOf lrmlmm:RuleStatement ;
     rdfs:label "Prescriptive Statement" ;
     rdfs:comment "a statement that grants, restricts, or otherwise governs conduct, e.g. a right or an exception." .
 lrmlmm:ConstitutiveStatement a owl:Class ;
+    rdfs:subClassOf lrmlmm:RuleStatement ;
     rdfs:label "Constitutive Statement" ;
     rdfs:comment "a statement that defines a term or establishes eligibility, without itself granting or restricting conduct." .
 
 :contains a owl:ObjectProperty ;
     rdfs:domain frbr:Expression ;
+    rdfs:range lrmlmm:RuleStatement ;
     rdfs:label "contains" ;
-    rdfs:comment "range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only." .
+    rdfs:seeAlso <https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf> ;
+    rdfs:comment "range is lrmlmm:RuleStatement, LegalRuleML's own formal common superclass of ConstitutiveStatement and PrescriptiveStatement (see statement.rdf in the OASIS metamodel RDFS modules), not an ad-hoc class of ours. Used for both constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only; fixed 2026-07-23: gave it a real range instead of leaving it open, which had made it resolve to owl:Thing in WebVOWL." .
+
+lrmlmm:RuleStatement a owl:Class ;
+    rdfs:label "Rule Statement" ;
+    rdfs:seeAlso <https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf> ;
+    rdfs:comment "a Legal Statement modelled by a Legal Rule; the formal LegalRuleML superclass of ConstitutiveStatement and PrescriptiveStatement, per the OASIS metamodel RDFS module (not part of the HTML spec's prose, only its machine-readable RDFS)." .
 
 :amendedBy a owl:DatatypeProperty ;
     rdfs:domain lrmlmm:PrescriptiveStatement ;

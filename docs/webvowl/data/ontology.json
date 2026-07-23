@@ -44,34 +44,34 @@
     "id" : "5",
     "type" : "owl:Class"
   }, {
-    "id" : "7",
+    "id" : "8",
     "type" : "owl:Class"
   }, {
-    "id" : "8",
+    "id" : "9",
     "type" : "rdfs:Datatype"
   }, {
-    "id" : "9",
+    "id" : "10",
     "type" : "rdfs:Datatype"
   }, {
     "id" : "11",
     "type" : "owl:Class"
   }, {
-    "id" : "12",
-    "type" : "rdfs:Datatype"
+    "id" : "7",
+    "type" : "owl:Class"
   }, {
     "id" : "13",
-    "type" : "owl:Thing"
+    "type" : "rdfs:Datatype"
   }, {
     "id" : "14",
     "type" : "owl:Thing"
   }, {
-    "id" : "20",
-    "type" : "rdfs:Datatype"
-  }, {
     "id" : "22",
     "type" : "rdfs:Datatype"
   }, {
-    "id" : "23",
+    "id" : "24",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "25",
     "type" : "owl:Class"
   }, {
     "id" : "1",
@@ -80,25 +80,25 @@
     "id" : "2",
     "type" : "owl:Class"
   }, {
-    "id" : "29",
-    "type" : "owl:Class"
-  }, {
-    "id" : "18",
-    "type" : "owl:Class"
-  }, {
     "id" : "31",
     "type" : "owl:Class"
   }, {
     "id" : "33",
     "type" : "owl:Class"
   }, {
+    "id" : "20",
+    "type" : "owl:Class"
+  }, {
+    "id" : "35",
+    "type" : "owl:Class"
+  }, {
     "id" : "4",
     "type" : "owl:Class"
   }, {
-    "id" : "16",
+    "id" : "18",
     "type" : "owl:Class"
   }, {
-    "id" : "19",
+    "id" : "21",
     "type" : "owl:Class"
   } ],
   "classAttribute" : [ {
@@ -113,7 +113,8 @@
       "undefined" : "a statement that defines a term or establishes eligibility, without itself granting or restricting conduct."
     },
     "attributes" : [ "external" ],
-    "id" : "6"
+    "id" : "6",
+    "superClasses" : [ "7" ]
   }, {
     "iri" : "https://w3id.org/wipo-ip#TimeUnit",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -151,18 +152,18 @@
       "undefined" : "one specific dated version of a Work (FRBR Expression), e.g. the 2000 text of the Irish Copyright Act."
     },
     "attributes" : [ "external" ],
-    "id" : "7"
+    "id" : "8"
   }, {
     "iri" : "http://www.w3.org/2001/XMLSchema#date",
     "baseIri" : "http://www.w3.org/2001/XMLSchema",
-    "id" : "8",
+    "id" : "9",
     "label" : {
       "IRI-based" : "date"
     }
   }, {
     "iri" : "http://www.w3.org/2001/XMLSchema#date",
     "baseIri" : "http://www.w3.org/2001/XMLSchema",
-    "id" : "9",
+    "id" : "10",
     "label" : {
       "IRI-based" : "date"
     }
@@ -178,20 +179,36 @@
       "undefined" : "a statement that grants, restricts, or otherwise governs conduct, e.g. a right or an exception."
     },
     "attributes" : [ "external" ],
-    "id" : "11"
+    "id" : "11",
+    "superClasses" : [ "7" ]
+  }, {
+    "iri" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement",
+    "baseIri" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel",
+    "instances" : 0,
+    "annotations" : {
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "RuleStatement",
+      "undefined" : "Rule Statement"
+    },
+    "subClasses" : [ "6", "11" ],
+    "comment" : {
+      "undefined" : "a Legal Statement modelled by a Legal Rule; the formal LegalRuleML superclass of ConstitutiveStatement and PrescriptiveStatement, per the OASIS metamodel RDFS module (not part of the HTML spec's prose, only its machine-readable RDFS)."
+    },
+    "attributes" : [ "external" ],
+    "id" : "7"
   }, {
     "iri" : "http://www.w3.org/2001/XMLSchema#integer",
     "baseIri" : "http://www.w3.org/2001/XMLSchema",
-    "id" : "12",
-    "label" : {
-      "IRI-based" : "integer"
-    }
-  }, {
-    "iri" : "http://www.w3.org/2002/07/owl#Thing",
-    "baseIri" : "http://owl2vowl.de",
     "id" : "13",
     "label" : {
-      "undefined" : "Thing"
+      "IRI-based" : "integer"
     }
   }, {
     "iri" : "http://www.w3.org/2002/07/owl#Thing",
@@ -203,14 +220,14 @@
   }, {
     "iri" : "http://www.w3.org/2001/XMLSchema#string",
     "baseIri" : "http://www.w3.org/2001/XMLSchema",
-    "id" : "20",
+    "id" : "22",
     "label" : {
       "IRI-based" : "string"
     }
   }, {
     "iri" : "http://www.w3.org/2001/XMLSchema#date",
     "baseIri" : "http://www.w3.org/2001/XMLSchema",
-    "id" : "22",
+    "id" : "24",
     "label" : {
       "IRI-based" : "date"
     }
@@ -238,7 +255,7 @@
     "comment" : {
       "undefined" : "the kind of subject matter a Copyright or ExceptionOrLimitation applies to, e.g. literary work or sound recording."
     },
-    "id" : "23"
+    "id" : "25"
   }, {
     "iri" : "https://w3id.org/wipo-ip#TreatyMembership",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -283,19 +300,7 @@
     "comment" : {
       "undefined" : "a country-specific carve-out from Copyright, e.g. Ireland's fair dealing for research; classified by one or more ExceptionKind."
     },
-    "id" : "29"
-  }, {
-    "iri" : "https://w3id.org/wipo-ip#Copyright",
-    "baseIri" : "https://w3id.org/wipo-ip",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Copyright",
-      "undefined" : "Copyright"
-    },
-    "comment" : {
-      "undefined" : "the bundle of rights a Work carries; which specific acts it covers is given via :includesAct."
-    },
-    "id" : "18"
+    "id" : "31"
   }, {
     "iri" : "https://w3id.org/wipo-ip#ExceptionKind",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -349,7 +354,19 @@
     "comment" : {
       "undefined" : "the same Copyright Ontology (Garcia & Gil, JURIX 2008) lists seven exceptions: Quotation, Education, Information, Official Act, Private Copy, Parody, Temporary Reproduction. PrivateUseException and ParodyException match exactly (Private Copy, Parody); ResearchException, CriticismReviewException and NewsReportingException are only approximate matches to Education, Quotation and Information respectively, not identical in scope, flagged here rather than assumed equivalent."
     },
-    "id" : "31"
+    "id" : "33"
+  }, {
+    "iri" : "https://w3id.org/wipo-ip#Copyright",
+    "baseIri" : "https://w3id.org/wipo-ip",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Copyright",
+      "undefined" : "Copyright"
+    },
+    "comment" : {
+      "undefined" : "the bundle of rights a Work carries; which specific acts it covers is given via :includesAct."
+    },
+    "id" : "20"
   }, {
     "iri" : "https://w3id.org/wipo-ip#ReferenceEvent",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -374,7 +391,7 @@
     "comment" : {
       "undefined" : "the event a ProtectionTerm is counted from, e.g. the author's death or the work's creation."
     },
-    "id" : "33"
+    "id" : "35"
   }, {
     "iri" : "https://w3id.org/wipo-ip#ProtectionTerm",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -399,7 +416,7 @@
       "undefined" : "the country or supranational body a legal Expression applies in; ISO code, or 'un' for WIPO treaties."
     },
     "attributes" : [ "external" ],
-    "id" : "16"
+    "id" : "18"
   }, {
     "iri" : "https://w3id.org/wipo-ip#RightKind",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -408,12 +425,12 @@
       "seeAlso" : [ {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "https://jurix.nl/pdf/j03-12.pdf",
+        "value" : "https://rhizomik.net/html/~roberto/papers/rg-losw08.pdf",
         "type" : "iri"
       }, {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "https://rhizomik.net/html/~roberto/papers/rg-losw08.pdf",
+        "value" : "https://jurix.nl/pdf/j03-12.pdf",
         "type" : "iri"
       } ]
     },
@@ -434,6 +451,12 @@
         "IRI-based" : "MakingAvailableAct"
       }
     }, {
+      "iri" : "https://w3id.org/wipo-ip#BroadcastingAct",
+      "baseIri" : "https://w3id.org/wipo-ip",
+      "labels" : {
+        "IRI-based" : "BroadcastingAct"
+      }
+    }, {
       "iri" : "https://w3id.org/wipo-ip#RecordingAct",
       "baseIri" : "https://w3id.org/wipo-ip",
       "comment" : {
@@ -441,12 +464,6 @@
       },
       "labels" : {
         "IRI-based" : "RecordingAct"
-      }
-    }, {
-      "iri" : "https://w3id.org/wipo-ip#BroadcastingAct",
-      "baseIri" : "https://w3id.org/wipo-ip",
-      "labels" : {
-        "IRI-based" : "BroadcastingAct"
       }
     }, {
       "iri" : "https://w3id.org/wipo-ip#ReproductionAct",
@@ -476,7 +493,7 @@
     "comment" : {
       "undefined" : "matches the Economic Rights hierarchy in Garcia & Gil's Copyright Ontology (JURIX 2008): Reproduction, Distribution, Communication (with Broadcasting and Making Available as subtypes), Transformation (with Adaptation and Translation as subtypes), Fixation. That hierarchy refines the four top-level ExploitationRight classes (Reproduction, Communication, Distribution, Transformation) in Delgado et al.'s earlier IPROnto (JURIX 2003). All eight individuals below have a direct counterpart in the 2008 version."
     },
-    "id" : "19"
+    "id" : "21"
   } ],
   "property" : [ {
     "id" : "0",
@@ -485,26 +502,26 @@
     "id" : "3",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "10",
+    "id" : "12",
     "type" : "owl:datatypeProperty"
   }, {
     "id" : "15",
-    "type" : "owl:objectProperty"
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "16",
+    "type" : "rdfs:SubClassOf"
   }, {
     "id" : "17",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "21",
-    "type" : "owl:datatypeProperty"
-  }, {
-    "id" : "24",
-    "type" : "owl:datatypeProperty"
-  }, {
-    "id" : "25",
+    "id" : "19",
     "type" : "owl:objectProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "26",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "27",
     "type" : "owl:objectProperty"
@@ -512,28 +529,34 @@
     "id" : "28",
     "type" : "owl:objectProperty"
   }, {
+    "id" : "29",
+    "type" : "owl:objectProperty"
+  }, {
     "id" : "30",
     "type" : "owl:objectProperty"
   }, {
     "id" : "32",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "34",
-    "type" : "owl:objectProperty"
-  }, {
-    "id" : "35",
-    "type" : "owl:objectProperty"
+    "type" : "owl:datatypeProperty"
   }, {
     "id" : "36",
     "type" : "owl:objectProperty"
   }, {
     "id" : "37",
-    "type" : "owl:datatypeProperty"
+    "type" : "owl:objectProperty"
   }, {
     "id" : "38",
     "type" : "owl:objectProperty"
   }, {
     "id" : "39",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "40",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "41",
     "type" : "owl:objectProperty"
   } ],
   "propertyAttribute" : [ {
@@ -561,64 +584,74 @@
   }, {
     "iri" : "https://w3id.org/wipo-ip#inForceTo",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "8",
+    "range" : "9",
     "label" : {
       "IRI-based" : "inForceTo",
       "undefined" : "in force to"
     },
-    "domain" : "7",
+    "domain" : "8",
     "comment" : {
       "undefined" : "end of the validity interval; no value means still in force. CQ5."
     },
     "attributes" : [ "datatype" ],
-    "id" : "10"
+    "id" : "12"
+  }, {
+    "range" : "7",
+    "domain" : "6",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "15"
+  }, {
+    "range" : "7",
+    "domain" : "11",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "16"
   }, {
     "iri" : "https://w3id.org/wipo-ip#memberJurisdiction",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "16",
+    "range" : "18",
     "label" : {
       "IRI-based" : "memberJurisdiction",
       "undefined" : "member jurisdiction"
     },
     "domain" : "1",
     "attributes" : [ "object" ],
-    "id" : "15"
+    "id" : "17"
   }, {
     "iri" : "https://w3id.org/wipo-ip#includesAct",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "19",
+    "range" : "21",
     "label" : {
       "IRI-based" : "includesAct",
       "undefined" : "includes act"
     },
-    "domain" : "18",
+    "domain" : "20",
     "comment" : {
       "undefined" : "CQ2. Which acts a copyright covers; a country can list several. Mapping these across countries is an approximation, not a formal equivalence: Ireland's single 'make available to the public' is treated here as the closest match to what India and Kenya sometimes split into distribution, communication to the public, and making available as separate items. Flagged here, not silently assumed as equal."
     },
     "attributes" : [ "object" ],
-    "id" : "17"
+    "id" : "19"
   }, {
     "iri" : "https://w3id.org/wipo-ip#inForceFrom",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "22",
+    "range" : "24",
     "label" : {
       "IRI-based" : "inForceFrom",
       "undefined" : "in force from"
     },
-    "domain" : "7",
+    "domain" : "8",
     "attributes" : [ "datatype" ],
-    "id" : "21"
+    "id" : "23"
   }, {
     "iri" : "https://w3id.org/wipo-ip#termValue",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "12",
+    "range" : "13",
     "label" : {
       "IRI-based" : "termValue",
       "undefined" : "term value"
     },
     "domain" : "4",
     "attributes" : [ "datatype" ],
-    "id" : "24"
+    "id" : "26"
   }, {
     "iri" : "https://w3id.org/wipo-ip#hasTerm",
     "baseIri" : "https://w3id.org/wipo-ip",
@@ -627,104 +660,123 @@
       "IRI-based" : "hasTerm",
       "undefined" : "has term"
     },
-    "domain" : "18",
+    "domain" : "20",
     "attributes" : [ "object" ],
-    "id" : "25"
+    "id" : "27"
   }, {
     "iri" : "https://w3id.org/wipo-ip#expresses",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "18",
+    "range" : "20",
     "label" : {
       "IRI-based" : "expresses",
       "undefined" : "expresses"
     },
     "domain" : "11",
     "attributes" : [ "object" ],
-    "id" : "26"
+    "id" : "28"
   }, {
     "iri" : "https://w3id.org/wipo-ip#appliesInJurisdiction",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "16",
+    "range" : "18",
     "label" : {
       "IRI-based" : "appliesInJurisdiction",
       "undefined" : "applies in jurisdiction"
     },
-    "domain" : "7",
+    "domain" : "8",
     "attributes" : [ "object" ],
-    "id" : "27"
+    "id" : "29"
   }, {
     "iri" : "https://w3id.org/wipo-ip#subjectToException",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "29",
+    "range" : "31",
     "label" : {
       "IRI-based" : "subjectToException",
       "undefined" : "subject to exception"
     },
-    "domain" : "18",
+    "domain" : "20",
     "attributes" : [ "object" ],
-    "id" : "28"
+    "id" : "30"
   }, {
     "iri" : "https://w3id.org/wipo-ip#ofExceptionKind",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "31",
+    "range" : "33",
     "label" : {
       "IRI-based" : "ofExceptionKind",
       "undefined" : "of exception kind"
     },
-    "domain" : "29",
+    "domain" : "31",
     "attributes" : [ "object" ],
-    "id" : "30"
+    "id" : "32"
   }, {
     "iri" : "https://w3id.org/wipo-ip#sinceDate",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "9",
+    "range" : "10",
     "label" : {
       "IRI-based" : "sinceDate",
       "undefined" : "since date"
     },
     "domain" : "1",
     "attributes" : [ "datatype" ],
-    "id" : "32"
+    "id" : "34"
   }, {
     "iri" : "https://w3id.org/wipo-ip#countedFrom",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "33",
+    "range" : "35",
     "label" : {
       "IRI-based" : "countedFrom",
       "undefined" : "counted from"
     },
     "domain" : "4",
     "attributes" : [ "object" ],
-    "id" : "34"
+    "id" : "36"
   }, {
     "iri" : "https://w3id.org/wipo-ip#contains",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "13",
+    "range" : "7",
+    "annotations" : {
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf",
+        "type" : "iri"
+      } ]
+    },
     "label" : {
       "IRI-based" : "contains",
       "undefined" : "contains"
     },
-    "domain" : "7",
+    "domain" : "8",
     "comment" : {
-      "undefined" : "range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only."
+      "undefined" : "range is lrmlmm:RuleStatement, LegalRuleML's own formal common superclass of ConstitutiveStatement and PrescriptiveStatement (see statement.rdf in the OASIS metamodel RDFS modules), not an ad-hoc class of ours. Used for both constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only; fixed 2026-07-23: gave it a real range instead of leaving it open, which had made it resolve to owl:Thing in WebVOWL."
     },
     "attributes" : [ "object" ],
-    "id" : "35"
+    "id" : "37"
   }, {
     "iri" : "https://w3id.org/wipo-ip#hasRight",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "18",
+    "range" : "20",
     "label" : {
       "IRI-based" : "hasRight",
       "undefined" : "has right"
     },
     "domain" : "2",
     "attributes" : [ "object" ],
-    "id" : "36"
+    "id" : "38"
+  }, {
+    "iri" : "http://purl.org/vocab/frbr/core#realizationOf",
+    "baseIri" : "http://purl.org/vocab/frbr/core",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "realizationOf",
+      "undefined" : "realization of"
+    },
+    "domain" : "8",
+    "attributes" : [ "object", "external" ],
+    "id" : "39"
   }, {
     "iri" : "https://w3id.org/wipo-ip#amendedBy",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "20",
+    "range" : "22",
     "label" : {
       "IRI-based" : "amendedBy",
       "undefined" : "amended by"
@@ -734,22 +786,11 @@
       "undefined" : "which later Act changed this statement's wording, when the text itself says so (here, a footnote). CQ11, kept modest: this is not a full historical Expression, that would need the pre-amendment text itself, which we do not have cached yet."
     },
     "attributes" : [ "datatype" ],
-    "id" : "37"
-  }, {
-    "iri" : "http://purl.org/vocab/frbr/core#realizationOf",
-    "baseIri" : "http://purl.org/vocab/frbr/core",
-    "range" : "2",
-    "label" : {
-      "IRI-based" : "realizationOf",
-      "undefined" : "realization of"
-    },
-    "domain" : "7",
-    "attributes" : [ "object", "external" ],
-    "id" : "38"
+    "id" : "40"
   }, {
     "iri" : "https://w3id.org/wipo-ip#appliesTo",
     "baseIri" : "https://w3id.org/wipo-ip",
-    "range" : "23",
+    "range" : "25",
     "label" : {
       "IRI-based" : "appliesTo",
       "undefined" : "applies to"
@@ -759,6 +800,6 @@
       "undefined" : "domain intentionally left open: used for Copyright and for ExceptionOrLimitation alike, same fix as :contains above."
     },
     "attributes" : [ "object" ],
-    "id" : "39"
+    "id" : "41"
   } ]
 }

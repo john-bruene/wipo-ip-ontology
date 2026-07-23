@@ -119,8 +119,10 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/wipo-ip#contains">
         <rdfs:domain rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
-        <rdfs:comment>range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only.</rdfs:comment>
+        <rdfs:range rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"/>
+        <rdfs:comment>range is lrmlmm:RuleStatement, LegalRuleML&apos;s own formal common superclass of ConstitutiveStatement and PrescriptiveStatement (see statement.rdf in the OASIS metamodel RDFS modules), not an ad-hoc class of ours. Used for both constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only; fixed 2026-07-23: gave it a real range instead of leaving it open, which had made it resolve to owl:Thing in WebVOWL.</rdfs:comment>
         <rdfs:label>contains</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf"/>
     </owl:ObjectProperty>
     
 
@@ -321,6 +323,7 @@
 
 
     <owl:Class rdf:about="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement">
+        <rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"/>
         <rdfs:comment>a statement that defines a term or establishes eligibility, without itself granting or restricting conduct.</rdfs:comment>
         <rdfs:label>Constitutive Statement</rdfs:label>
     </owl:Class>
@@ -341,8 +344,20 @@
 
 
     <owl:Class rdf:about="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement">
+        <rdfs:subClassOf rdf:resource="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"/>
         <rdfs:comment>a statement that grants, restricts, or otherwise governs conduct, e.g. a right or an exception.</rdfs:comment>
         <rdfs:label>Prescriptive Statement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement -->
+
+
+    <owl:Class rdf:about="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">
+        <rdfs:comment>a Legal Statement modelled by a Legal Rule; the formal LegalRuleML superclass of ConstitutiveStatement and PrescriptiveStatement, per the OASIS metamodel RDFS module (not part of the HTML spec&apos;s prose, only its machine-readable RDFS).</rdfs:comment>
+        <rdfs:label>Rule Statement</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf"/>
     </owl:Class>
     
 

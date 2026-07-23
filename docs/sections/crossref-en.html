@@ -13,6 +13,7 @@ This section provides details for each class and property defined by WIPO IP Ont
   <li><a href="#ProtectionTerm" title="https://w3id.org/wipo-ip#ProtectionTerm">Protection Term</a></li>
   <li><a href="#ReferenceEvent" title="https://w3id.org/wipo-ip#ReferenceEvent">Reference Event</a></li>
   <li><a href="#RightKind" title="https://w3id.org/wipo-ip#RightKind">Right Kind</a></li>
+  <li><a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">Rule Statement</a></li>
   <li><a href="#TimeUnit" title="https://w3id.org/wipo-ip#TimeUnit">Time Unit</a></li>
   <li><a href="#TreatyMembership" title="https://w3id.org/wipo-ip#TreatyMembership">Treaty Membership</a></li>
   <li><a href="#http://purl.org/vocab/frbr/core#Work" title="http://purl.org/vocab/frbr/core#Work">Work</a></li>
@@ -24,6 +25,14 @@ This section provides details for each class and property defined by WIPO IP Ont
   <div class="comment">
    <span class="markdown">a statement that defines a term or establishes eligibility, without itself granting or restricting conduct.</span>
   </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">Rule Statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
  </div>
  <div class="entity" id="Copyright">
   <h3>Copyright<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
@@ -126,6 +135,12 @@ This section provides details for each class and property defined by WIPO IP Ont
   </div>
   <dl class="description">
    <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">Rule Statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
     is in domain of
    </dt>
    <dd>
@@ -193,6 +208,27 @@ This section provides details for each class and property defined by WIPO IP Ont
    </dt>
    <dd>
     <a href="#AdaptationAct" title="https://w3id.org/wipo-ip#AdaptationAct">Adaptation Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#BroadcastingAct" title="https://w3id.org/wipo-ip#BroadcastingAct">Broadcasting Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#CommunicationToPublicAct" title="https://w3id.org/wipo-ip#CommunicationToPublicAct">Communication To Public Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#DistributionAct" title="https://w3id.org/wipo-ip#DistributionAct">Distribution Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#MakingAvailableAct" title="https://w3id.org/wipo-ip#MakingAvailableAct">Making Available Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RecordingAct" title="https://w3id.org/wipo-ip#RecordingAct">Recording Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#ReproductionAct" title="https://w3id.org/wipo-ip#ReproductionAct">Reproduction Act</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#TranslationAct" title="https://w3id.org/wipo-ip#TranslationAct">Translation Act</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">
+  <h3>Rule Statement<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement</p>
+  <div class="comment">
+   <span class="markdown">a Legal Statement modelled by a Legal Rule; the formal LegalRuleML superclass of ConstitutiveStatement and PrescriptiveStatement, per the OASIS metamodel RDFS module (not part of the HTML spec's prose, only its machine-readable RDFS).</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#ConstitutiveStatement">Constitutive Statement</a> <sup class="type-c" title="class">c</sup>, <a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#PrescriptiveStatement">Prescriptive Statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#contains" title="https://w3id.org/wipo-ip#contains">contains</a> <sup class="type-op" title="object property">op</sup>
    </dd>
   </dl>
  </div>
@@ -339,7 +375,7 @@ This section provides details for each class and property defined by WIPO IP Ont
   <h3>contains<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
   <p><strong>IRI:</strong> https://w3id.org/wipo-ip#contains</p>
   <div class="comment">
-   <span class="markdown">range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only.</span>
+   <span class="markdown">range is lrmlmm:RuleStatement, LegalRuleML's own formal common superclass of ConstitutiveStatement and PrescriptiveStatement (see statement.rdf in the OASIS metamodel RDFS modules), not an ad-hoc class of ours. Used for both constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only; fixed 2026-07-23: gave it a real range instead of leaving it open, which had made it resolve to owl:Thing in WebVOWL.</span>
   </div>
   <div class="description">
    <dl>
@@ -348,6 +384,12 @@ This section provides details for each class and property defined by WIPO IP Ont
     </dt>
     <dd>
      <a href="#http://purl.org/vocab/frbr/core#Expression" title="http://purl.org/vocab/frbr/core#Expression">Expression</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement" title="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement">Rule Statement</a> <sup class="type-c" title="class">c</sup>
     </dd>
    </dl>
   </div>

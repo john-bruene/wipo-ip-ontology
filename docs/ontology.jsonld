@@ -6,6 +6,9 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Constitutive Statement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"
   } ]
 }, {
   "@id" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#Jurisdiction",
@@ -24,6 +27,21 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Prescriptive Statement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"
+  } ]
+}, {
+  "@id" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "a Legal Statement modelled by a Legal Rule; the formal LegalRuleML superclass of ConstitutiveStatement and PrescriptiveStatement, per the OASIS metamodel RDFS module (not part of the HTML spec's prose, only its machine-readable RDFS)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Rule Statement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf"
   } ]
 }, {
   "@id" : "http://purl.org/dc/elements/1.1/creator",
@@ -350,13 +368,19 @@
   "@id" : "https://w3id.org/wipo-ip#contains",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "range intentionally left open: used both for constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only."
+    "@value" : "range is lrmlmm:RuleStatement, LegalRuleML's own formal common superclass of ConstitutiveStatement and PrescriptiveStatement (see statement.rdf in the OASIS metamodel RDFS modules), not an ad-hoc class of ours. Used for both constitutive statements (definitions, eligibility rules) and prescriptive statements (rights, exceptions). Fixed 2026-07-22: an earlier draft wrongly restricted this to ConstitutiveStatement only; fixed 2026-07-23: gave it a real range instead of leaving it open, which had made it resolve to owl:Thing in WebVOWL."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "http://purl.org/vocab/frbr/core#Expression"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "contains"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#RuleStatement"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/rdfs/statement.rdf"
   } ]
 }, {
   "@id" : "https://w3id.org/wipo-ip#countedFrom",
